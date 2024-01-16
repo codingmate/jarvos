@@ -23,6 +23,7 @@ dependencies {
     implementation("org.springframework.cloud:spring-cloud-starter-openfeign:4.1.0")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
+
     testImplementation("org.springframework.boot:spring-boot-starter-test")
 }
 

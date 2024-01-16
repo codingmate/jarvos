@@ -35,7 +35,6 @@ class AirQualityService(
 
         val latestItem = items[0]
 
-
         return PmStatus(
             latestItem.dataTime, // 측정일시
             latestItem.pm25Value, // 미세먼지 pm2.5 농도
