@@ -12,7 +12,7 @@ data class TelegramGetUpdatesResponse(
     ) {
         data class Chat(
             val id: Long,
-            val title: String,
+            val title: String?,
             val type: String,
             @JsonProperty("all_members_are_administrators") val allMembersAreAdministrators: Boolean
         )

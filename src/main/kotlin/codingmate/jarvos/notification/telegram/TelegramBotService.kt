@@ -1,39 +1,24 @@
 package codingmate.jarvos.notification.telegram
 
-import codingmate.jarvos.notification.telegram.entity.TelegramMessage
-import codingmate.jarvos.notification.telegram.repository.TelegramMessageRepository
 import codingmate.jarvos.notification.telegram.response.TelegramGetUpdatesResponse
+import codingmate.jarvos.notification.telegram.response.TelegramBotSendMessageResponse
 import org.springframework.beans.factory.annotation.Value
-import org.springframework.scheduling.annotation.Scheduled
 import org.springframework.stereotype.Service
 
 @Service
 class TelegramBotService(
     private val telegramBotClient: TelegramBotClient,
-    private val telegramMessageRepository: TelegramMessageRepository,
-    @Value("\${api.telegramBot.Syhan}")
-    private val key: String
+    @Value("\${api.telegramBot.test.key}")
+    private val testKey: String,
+    @Value("\${api.telegramBot.test.chatId}")
+    private val testChatId: String,
 ) {
-    private var lastUpdateId: Long = 0
-
-    @Scheduled(fixedDelay = 10000)
-    fun pollUpdates() {
-        val updatesResponse = telegramBotClient.getUpdates(key)
-        updatesResponse.result.forEach { update ->
-            processUpdate(update)
-            lastUpdateId = update.updateId
-        }
+    fun getUpdates(token: String = testKey, offset: Long? = null, limit: Int? = null, timeout: Int? = null): TelegramGetUpdatesResponse {
+        return telegramBotClient.getUpdates(token, offset, limit, timeout)
+    }
+    fun sendMessage(token: String = testKey, chatId: String = testChatId, text: String = "Dream Comes True", parseMode: String? = null,
+                    disableWebPagePreview: Boolean? = null, disableNotification: Boolean? = null): TelegramBotSendMessageResponse {
+        return telegramBotClient.sendMessage(token, chatId, text, parseMode, disableWebPagePreview, disableNotification)
     }
 
-    private fun processUpdate(update: TelegramGetUpdatesResponse.Update) {
-        update.message?.let { message ->
-            // 데이터베이스에 메시지 저장
-            val telegramMessage = TelegramMessage(chatId = message.chat.id, message = update.message)
-            telegramMessageRepository.save(telegramMessage)
-
-        }
-    }
-    fun sendMessage(chatId: String, message: String) {
-        telegramBotClient.sendMessage(key, chatId, message)
-    }
 }

@@ -2,7 +2,7 @@ package codingmate.jarvos.notification.telegram.response
 
 import com.fasterxml.jackson.annotation.JsonProperty
 
-data class TelegramSendMessageResponse(
+data class TelegramBotSendMessageResponse(
     val ok: Boolean,
     val result: Result
 ) {
