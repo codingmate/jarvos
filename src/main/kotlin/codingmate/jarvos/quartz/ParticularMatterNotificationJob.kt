@@ -3,15 +3,14 @@ package codingmate.jarvos.quartz
 import codingmate.jarvos.notification.telegram.TelegramBotService
 import org.quartz.Job
 import org.quartz.JobExecutionContext
-import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.stereotype.Component
 
-
-class ParticularMatterNotificationJob: Job {
-
-    @Autowired
-    private lateinit var telegramBotService: TelegramBotService
-
-    override fun execute(context: JobExecutionContext?) {
-
+@Component
+class ParticularMatterNotificationJob(
+    private val telegramBotService: TelegramBotService
+): Job{
+    override fun execute(context: JobExecutionContext) {
+        telegramBotService.sendMessage()
+        println(">>>>>>>>>>>>>>>>>>>${System.currentTimeMillis()}")
     }
 }
