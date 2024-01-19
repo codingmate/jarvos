@@ -16,9 +16,9 @@ class TelegramBotService(
     fun getUpdates(token: String = testKey, offset: Long? = null, limit: Int? = null, timeout: Int? = null): TelegramGetUpdatesResponse {
         return telegramBotClient.getUpdates(token, offset, limit, timeout)
     }
-    fun sendMessage(token: String = testKey, chatId: String = testChatId, text: String = "Dream Comes True", parseMode: String? = null,
+    fun sendMessage(token: String = testKey, chatId: String = testChatId, message: String = "Dream Comes True", parseMode: String? = null,
                     disableWebPagePreview: Boolean? = null, disableNotification: Boolean? = null): TelegramBotSendMessageResponse {
-        return telegramBotClient.sendMessage(token, chatId, text, parseMode, disableWebPagePreview, disableNotification)
+        return telegramBotClient.sendMessage(token, chatId, message, parseMode, disableWebPagePreview, disableNotification)
     }
 
 }
