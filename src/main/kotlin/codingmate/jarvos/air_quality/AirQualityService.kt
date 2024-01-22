@@ -20,6 +20,7 @@ class AirQualityService(
         }
     }
     data class PmStatus(
+        val stationName: String,
         val dataTime: String?,
         val pm25Value: String?,
         val pm25Status: String?,
@@ -36,6 +37,7 @@ class AirQualityService(
         val latestItem = items[0]
 
         return PmStatus(
+            stationName, // 측정소 이름
             latestItem.dataTime, // 측정일시
             latestItem.pm25Value, // 미세먼지 pm2.5 농도
             gradeToStatus(latestItem.pm25Grade1h),
