@@ -31,6 +31,6 @@ class ParticularMatterNotificationJob(
         """.trimIndent()
         //telegramBotService.sendMessage()
 
-        telegramBotService.sendMessage(message = message)
+        telegramBotService.sendMessageToEmberAndWade(message = message)
     }
 }

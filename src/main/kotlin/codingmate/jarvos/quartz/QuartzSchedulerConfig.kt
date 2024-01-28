@@ -21,7 +21,7 @@ class QuartzSchedulerConfig {
 
         val scheduler: Scheduler = schedulerFactoryBean.`object`!!
 
-        scheduleJob(scheduler, ParticularMatterNotificationJob::class.java, "particular", "0 0 8 * * ?")
+        scheduleJob(scheduler, ParticularMatterNotificationJob::class.java, "particular", "0 0 7 * * ?")
 
         scheduler.start()
     }
