@@ -1,6 +1,6 @@
 package codingmate.jarvos.notification.telegram
 
-import codingmate.jarvos.notification.telegram.response.TelegramGetUpdatesResponse
+import codingmate.jarvos.notification.telegram.response.TelegramBotGetUpdatesResponse
 import codingmate.jarvos.notification.telegram.response.TelegramBotSendMessageResponse
 import org.springframework.cloud.openfeign.FeignClient
 import org.springframework.web.bind.annotation.GetMapping
@@ -15,7 +15,7 @@ interface TelegramBotClient {
         @RequestParam("offset") offset: Long? = null, // 업데이트 처리를 시작할 메시지 ID
         @RequestParam("limit") limit: Int? = null, // 한 번의 요청에 반환할 업데이트 개수의 최대값
         @RequestParam("timeout") timeout: Int? = null // Long Polling 타임아웃 시간(초 단위)
-    ): TelegramGetUpdatesResponse
+    ): TelegramBotGetUpdatesResponse
     @GetMapping(value = ["/bot{token}/sendmessage"])
     fun sendMessage(
         @PathVariable("token") token: String, // Telegram Bot 토큰

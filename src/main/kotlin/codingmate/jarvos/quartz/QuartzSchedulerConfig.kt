@@ -1,13 +1,12 @@
 package codingmate.jarvos.quartz
 
+import codingmate.jarvos.quartz.job.AirQualityDataFetchJob
+import codingmate.jarvos.quartz.job.ParticularMatterNotificationJob
 import jakarta.annotation.PostConstruct
 import org.quartz.*
 
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.context.ApplicationContext
-import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
-import org.springframework.context.annotation.Lazy
 import org.springframework.scheduling.quartz.SchedulerFactoryBean
 
 @Configuration
@@ -21,7 +20,9 @@ class QuartzSchedulerConfig {
 
         val scheduler: Scheduler = schedulerFactoryBean.`object`!!
 
-        scheduleJob(scheduler, ParticularMatterNotificationJob::class.java, "particular", "0 0 7 * * ?")
+        //scheduleJob(scheduler, ParticularMatterNotificationJob::class.java, "particularMatterNotification", "0 0 7 * * ?")
+        scheduleJob(scheduler, AirQualityDataFetchJob::class.java, "airQualityDataFetch", "* 30 0/1 * * ?")
+        scheduleJob(scheduler, ParticularMatterNotificationJob::class.java, "particularMatterNotification", "0/10 * * * * ?")
 
         scheduler.start()
     }

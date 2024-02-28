@@ -1,7 +1,8 @@
 package codingmate.jarvos.notification.telegram
 
 import codingmate.jarvos.notification.telegram.response.TelegramBotSendMessageResponse
-import codingmate.jarvos.notification.telegram.response.TelegramGetUpdatesResponse
+import codingmate.jarvos.notification.telegram.response.TelegramBotGetUpdatesResponse
+import codingmate.jarvos.telegram.TelegramBotService
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
@@ -12,7 +13,7 @@ class TelegramBotTestController(private val telegramBotService: TelegramBotServi
 
     // Telegram Bot의 업데이트를 가져오는 엔드포인트
     @GetMapping("/getUpdates")
-    fun getUpdates(): TelegramGetUpdatesResponse {
+    fun getUpdates(): TelegramBotGetUpdatesResponse {
         return telegramBotService.getUpdates()
     }
 
