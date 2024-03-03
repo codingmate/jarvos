@@ -2,6 +2,7 @@ package codingmate.jarvos.quartz
 
 import codingmate.jarvos.quartz.job.AirQualityDataFetchJob
 import codingmate.jarvos.quartz.job.ParticularMatterNotificationJob
+import codingmate.jarvos.quartz.job.ParticularMatterReCheckJob
 import jakarta.annotation.PostConstruct
 import org.quartz.*
 
@@ -20,9 +21,17 @@ class QuartzSchedulerConfig {
 
         val scheduler: Scheduler = schedulerFactoryBean.`object`!!
 
-        //scheduleJob(scheduler, ParticularMatterNotificationJob::class.java, "particularMatterNotification", "0 0 7 * * ?")
-        scheduleJob(scheduler, AirQualityDataFetchJob::class.java, "airQualityDataFetch", "* 30 0/1 * * ?")
-        scheduleJob(scheduler, ParticularMatterNotificationJob::class.java, "particularMatterNotification", "0/10 * * * * ?")
+        // 대기 오염도 api를 사용하여 db에 적재
+        scheduleJob(scheduler, AirQualityDataFetchJob::class.java, "airQualityDataFetch", "0 30 0/1 * * ?")
+
+        // 미세먼지 알림 ( 7시 )
+        scheduleJob(scheduler, ParticularMatterNotificationJob::class.java, "particularMatterNotification", "0 0/5 7 * * ?")
+        scheduleJob(scheduler, ParticularMatterReCheckJob::class.java, "particularMatterReCheckJob", "0 30 8-19 * * ?")
+
+        // test
+//        scheduleJob(scheduler, AirQualityDataFetchJob::class.java, "airQualityDataFetch", "0/10 * * * * ?")
+//        scheduleJob(scheduler, ParticularMatterNotificationJob::class.java, "particularMatterNotification", "0/15 * * * * ?")
+//        scheduleJob(scheduler, ParticularMatterReCheckJob::class.java, "particularMatterReCheckJob", "0/10 * * * * ?")
 
         scheduler.start()
     }

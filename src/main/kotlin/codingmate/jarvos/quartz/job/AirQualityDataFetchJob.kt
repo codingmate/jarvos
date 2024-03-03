@@ -2,7 +2,7 @@ package codingmate.jarvos.quartz.job
 
 import codingmate.jarvos.air_quality.AirQualityService
 import codingmate.jarvos.data.entity.ParticularMatterInfo
-import codingmate.jarvos.data.repository.history.ParticularMatterInfoRepository
+import codingmate.jarvos.data.repository.ParticularMatterInfoRepository
 import org.quartz.Job
 import org.quartz.JobExecutionContext
 import org.springframework.stereotype.Component

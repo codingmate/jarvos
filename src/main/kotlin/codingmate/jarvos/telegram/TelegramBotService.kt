@@ -1,7 +1,7 @@
 package codingmate.jarvos.telegram
 
 import codingmate.jarvos.data.entity.history.TelegramBotApiUseHistory
-import codingmate.jarvos.data.repository.TelegramBotApiUseHistoryRepository
+import codingmate.jarvos.data.repository.history.TelegramBotApiUseHistoryRepository
 import codingmate.jarvos.notification.telegram.TelegramBotClient
 import codingmate.jarvos.notification.telegram.response.TelegramBotGetUpdatesResponse
 import codingmate.jarvos.notification.telegram.response.TelegramBotSendMessageResponse
@@ -11,13 +11,13 @@ import java.time.LocalDateTime
 
 @Service
 class TelegramBotService(
-    private val tbahRepo: TelegramBotApiUseHistoryRepository,
-    private val telegramBotClient: TelegramBotClient,
-    @Value("\${api.telegramBot.syHan.key}")
+        private val tbahRepo: TelegramBotApiUseHistoryRepository,
+        private val telegramBotClient: TelegramBotClient,
+        @Value("\${api.telegramBot.syHan.key}")
     private val syHanKey: String,
-    @Value("\${api.telegramBot.chatId.wade}")
+        @Value("\${api.telegramBot.chatId.wade}")
     private val wadeChatId: String,
-    @Value("\${api.telegramBot.chatId.ember}")
+        @Value("\${api.telegramBot.chatId.ember}")
     private val emberChatId: String,
 ) {
     fun getUpdates(token: String = syHanKey, offset: Long? = null, limit: Int? = null, timeout: Int? = null): TelegramBotGetUpdatesResponse {

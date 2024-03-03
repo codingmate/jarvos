@@ -1,4 +1,4 @@
-package codingmate.jarvos.data.repository.history
+package codingmate.jarvos.data.repository
 
 import codingmate.jarvos.data.entity.ParticularMatterInfo
 import jakarta.persistence.EntityManager
