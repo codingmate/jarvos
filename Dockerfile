@@ -6,6 +6,6 @@ ENV TZ=Asia/Seoul
 
 WORKDIR /app
 
-COPY ./build/libs/jarvos-0.0.1-SNAPSHOT.jar /app/application.jar
+COPY ./jar/jarvos-0.0.1-SNAPSHOT.jar /jar/application.jar
 
-ENTRYPOINT ["java", "-jar", "/app/application.jar"]
+ENTRYPOINT ["java", "-jar", "/jar/application.jar"]

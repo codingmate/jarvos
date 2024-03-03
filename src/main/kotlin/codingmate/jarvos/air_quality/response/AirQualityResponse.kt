@@ -29,16 +29,18 @@ data class AirQualityResponse(
                 val no2Value: String?, // 이산화질소 농도(ppm)
                 val o3Value: String?, // 오존 농도(ppm)
                 val mangName: String?, // 측정망 정보
-                val pm10Value24: String?, // 미세먼지(PM10) 24시간 예측 이동농도(㎍/㎥)
                 val pm10Flag: String?, // 미세먼지(PM10) 플래그
-                val pm25Grade: String?, // 미세먼지(PM2.5) 24시간 등급자료
                 val pm25Flag: String?, // 미세먼지(PM2.5) 플래그
-                val pm25Value24: String?, // 미세먼지(PM2.5) 24시간 예측 이동농도(㎍/㎥)
+                val pm10Grade: String, // 미세먼지(PM10) 24시간 등급자료
+                val pm25Grade: String, // 미세먼지(PM2.5) 24시간 등급자료
+                val pm10Value24: String, // 미세먼지(PM10) 24시간 예측 이동농도(㎍/㎥)
+
                 val dataTime: String, // 측정일시 (연-월-일 시간:분)
                 val pm10Value: String, // 미세먼지(PM10) 농도(㎍/㎥)
-                val pm10Grade: String, // 미세먼지(PM10) 24시간 등급자료
+                val pm10Grade1h: String, // 미세먼지(PM10) 1시간 등급자료
+                val pm25Value24: String, // 미세먼지(PM2.5) 24시간 예측 이동농도(㎍/㎥)
                 val pm25Grade1h: String, // 미세먼지(PM2.5) 1시간 등급자료
-                val pm25Value: String?, // 미세먼지(PM2.5) 농도(㎍/㎥)
+                val pm25Value: String, // 미세먼지(PM2.5) 농도(㎍/㎥)
             )
         }
 
