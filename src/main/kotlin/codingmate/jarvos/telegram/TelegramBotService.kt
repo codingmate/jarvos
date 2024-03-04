@@ -35,7 +35,7 @@ class TelegramBotService(
 
     fun sendMessageToEmberAndWade(etc: String, message: String) {
         this.sendMessage(chatId = wadeChatId, etc = etc, message = message)
-        //this.sendMessage(chatId = emberChatId, etc = etc, message = message)
+        this.sendMessage(chatId = emberChatId, etc = etc, message = message)
     }
     fun sendMessage(token: String = syHanKey, chatId: String = wadeChatId, etc: String = "", message: String = "Dream Comes True", parseMode: String? = null,
                     disableWebPagePreview: Boolean? = null, disableNotification: Boolean? = null): TelegramBotSendMessageResponse {

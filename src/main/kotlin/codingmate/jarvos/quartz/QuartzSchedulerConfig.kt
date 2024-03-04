@@ -26,7 +26,7 @@ class QuartzSchedulerConfig {
 
         // 미세먼지 알림 ( 7시 )
         scheduleJob(scheduler, ParticularMatterNotificationJob::class.java, "particularMatterNotification", "0 0/5 7 * * ?")
-        scheduleJob(scheduler, ParticularMatterReCheckJob::class.java, "particularMatterReCheckJob", "0 30 8-19 * * ?")
+        scheduleJob(scheduler, ParticularMatterReCheckJob::class.java, "particularMatterReCheckJob", "0 0/10 8-19 * * ?")
 
         // test
 //        scheduleJob(scheduler, AirQualityDataFetchJob::class.java, "airQualityDataFetch", "0/10 * * * * ?")
