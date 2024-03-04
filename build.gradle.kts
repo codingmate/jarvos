@@ -35,7 +35,15 @@ dependencies {
     implementation("org.xerial:sqlite-jdbc:3.45.1.0")
     implementation("org.hibernate.orm:hibernate-community-dialects:6.4.2.Final")
 
+    implementation("org.seleniumhq.selenium:selenium-java:4.18.1")
+    implementation("org.jsoup:jsoup:1.17.2")
+
     testImplementation("org.springframework.boot:spring-boot-starter-test")
+
+    testImplementation("org.mockito:mockito-core:5.11.0")
+    testImplementation("org.junit.jupiter:junit-jupiter-api:5.10.2")
+    testImplementation("org.junit.jupiter:junit-jupiter-engine:5.10.2")
+
 }
 
 tasks.withType<KotlinCompile> {
