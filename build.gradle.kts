@@ -37,6 +37,8 @@ dependencies {
 
     implementation("org.seleniumhq.selenium:selenium-java:4.18.1")
     implementation("org.jsoup:jsoup:1.17.2")
+    implementation("com.squareup.okhttp3:okhttp:4.12.0")
+
 
     testImplementation("org.springframework.boot:spring-boot-starter-test")
 
