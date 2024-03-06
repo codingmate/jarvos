@@ -26,4 +26,17 @@ class Crawler {
             )
         }
     }
+    fun extractAllowDisallowUrlsFromRobotsTxt(robotsTxt: String): Pair<Set<String>, Set<String>> {
+        val allowUrlSet = mutableSetOf<String>()
+        val disallowUrlSet = mutableSetOf<String>()
+
+        robotsTxt.lineSequence().forEach { line ->
+            when {
+                line.startsWith("Allow: ") -> allowUrlSet.add(line.removePrefix("Allow: ").trim())
+                line.startsWith("Disallow: ") -> disallowUrlSet.add(line.removePrefix("Disallow: ").trim())
+            }
+        }
+
+        return Pair(allowUrlSet, disallowUrlSet)
+    }
 }
